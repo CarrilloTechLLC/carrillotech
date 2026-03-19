@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carrillo Tech Solutions LLC</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --black: #05091A;
+  --navy: #0A1628;
+  --blue: #1A6FE8;
+  --lblue: #4A9FFF;
+  --gold: #C8A94A;
+  --lgold: #E8C97A;
+  --white: #FFFFFF;
+  --gray: #8899AA;
+  --lgray: #C0CDD8;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: 'Rajdhani', sans-serif;
+  overflow-x: hidden;
+}
+
+/* Animated star background */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-image:
+    radial-gradient(1px 1px at 20% 30%, rgba(74,159,255,0.4) 0%, transparent 100%),
+    radial-gradient(1px 1px at 80% 10%, rgba(200,169,74,0.3) 0%, transparent 100%),
+    radial-gradient(1px 1px at 50% 80%, rgba(74,159,255,0.3) 0%, transparent 100%),
+    radial-gradient(1px 1px at 90% 60%, rgba(200,169,74,0.2) 0%, transparent 100%),
+    radial-gradient(2px 2px at 10% 70%, rgba(74,159,255,0.2) 0%, transparent 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* NAV */
+nav {
+  position: fixed;
+  top: 0; width: 100%;
+  background: rgba(5,9,26,0.95);
+  border-bottom: 1px solid rgba(26,111,232,0.3);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  padding: 0 4rem;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-brand {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 900;
+  color: var(--white);
+  letter-spacing: 3px;
+}
+
+.nav-brand span { color: var(--gold); }
+
+.nav-links { display: flex; gap: 2.5rem; list-style: none; }
+.nav-links a {
+  color: var(--lgray);
+  text-decoration: none;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: color 0.3s;
+  position: relative;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; left: 0;
+  width: 0; height: 2px;
+  background: var(--gold);
+  transition: width 0.3s;
+}
+.nav-links a:hover { color: var(--gold); }
+.nav-links a:hover::after { width: 100%; }
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 8rem 4rem 4rem;
+  overflow: hidden;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  max-width: 1200px;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-emblem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.hero-emblem img {
+  width: 380px;
+  height: 380px;
+  object-fit: contain;
+  animation: float 4s ease-in-out infinite;
+  filter: drop-shadow(0 0 40px rgba(26,111,232,0.5));
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-18px); }
+}
+
+.hero-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(26,111,232,0.2);
+  animation: spin 20s linear infinite;
+}
+.hero-ring:nth-child(2) { width: 420px; height: 420px; animation-duration: 20s; }
+.hero-ring:nth-child(3) { width: 480px; height: 480px; animation-duration: 30s; animation-direction: reverse; border-color: rgba(200,169,74,0.15); }
+
+@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+.hero-text { position: relative; z-index: 1; }
+
+.hero-eyebrow {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 5px;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.hero-name {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 3.2rem;
+  font-weight: 900;
+  line-height: 1.1;
+  color: var(--white);
+  letter-spacing: 3px;
+  margin-bottom: 0.5rem;
+}
+
+.hero-company {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: var(--lblue);
+  letter-spacing: 4px;
+  margin-bottom: 2rem;
+}
+
+.hero-divider {
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold), transparent);
+  margin-bottom: 1.5rem;
+}
+
+.hero-desc {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--lgray);
+  line-height: 1.8;
+  margin-bottom: 2.5rem;
+  max-width: 480px;
+}
+
+.hero-desc strong { color: var(--gold); }
+
+.hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+.btn-primary {
+  padding: 0.9rem 2rem;
+  background: var(--blue);
+  color: var(--white);
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+  transition: background 0.3s, transform 0.2s;
+}
+.btn-primary:hover { background: var(--lblue); transform: translateY(-2px); }
+
+.btn-outline {
+  padding: 0.9rem 2rem;
+  background: transparent;
+  color: var(--gold);
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  border: 1px solid var(--gold);
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: background 0.3s, color 0.3s;
+}
+.btn-outline:hover { background: var(--gold); color: var(--black); }
+
+.hero-stats {
+  display: flex;
+  gap: 2.5rem;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(26,111,232,0.2);
+}
+.stat-item { text-align: left; }
+.stat-num {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: var(--gold);
+}
+.stat-label {
+  font-size: 0.8rem;
+  color: var(--gray);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* SECTIONS */
+section { padding: 6rem 4rem; position: relative; z-index: 1; }
+
+.section-label {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 6px;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+.section-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: var(--white);
+  letter-spacing: 2px;
+  margin-bottom: 1rem;
+}
+
+.section-title span { color: var(--lblue); }
+
+.section-divider {
+  width: 60px;
+  height: 3px;
+  background: var(--gold);
+  margin-bottom: 3rem;
+}
+
+/* ABOUT */
+#about { background: rgba(10,22,40,0.6); border-top: 1px solid rgba(26,111,232,0.15); }
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.about-text p {
+  color: var(--lgray);
+  font-size: 1.05rem;
+  line-height: 1.9;
+  margin-bottom: 1.5rem;
+}
+
+.about-text p strong { color: var(--gold); }
+
+.about-badges { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2rem; }
+
+.badge {
+  padding: 0.4rem 1rem;
+  border: 1px solid rgba(26,111,232,0.4);
+  color: var(--lblue);
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  background: rgba(26,111,232,0.08);
+}
+
+.about-highlights { display: flex; flex-direction: column; gap: 1.5rem; }
+
+.highlight-item {
+  padding: 1.5rem;
+  background: rgba(26,111,232,0.06);
+  border-left: 3px solid var(--blue);
+  position: relative;
+}
+
+.highlight-item::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 3px; height: 100%;
+  background: var(--gold);
+  opacity: 0.3;
+}
+
+.hi-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: 2px;
+  margin-bottom: 0.5rem;
+}
+
+.hi-text {
+  color: var(--lgray);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+/* SERVICES */
+#services { background: var(--black); }
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.service-card {
+  background: rgba(10,22,40,0.8);
+  border: 1px solid rgba(26,111,232,0.2);
+  padding: 2.5rem 2rem;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.3s, transform 0.3s;
+  clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 0 100%);
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 3px;
+  background: linear-gradient(90deg, var(--blue), transparent);
+}
+
+.service-card:hover {
+  border-color: rgba(200,169,74,0.4);
+  transform: translateY(-5px);
+}
+
+.service-card:hover::before {
+  background: linear-gradient(90deg, var(--gold), transparent);
+}
+
+.service-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.service-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: 2px;
+  margin-bottom: 1rem;
+}
+
+.service-desc {
+  color: var(--gray);
+  font-size: 0.95rem;
+  line-height: 1.8;
+}
+
+.service-features {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.sf { color: var(--lblue); font-size: 0.85rem; }
+.sf::before { content: '→ '; color: var(--gold); }
+
+/* CERTIFICATIONS */
+#certifications { background: rgba(10,22,40,0.6); border-top: 1px solid rgba(26,111,232,0.15); }
+
+.certs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.cert-card {
+  background: rgba(5,9,26,0.9);
+  border: 1px solid rgba(26,111,232,0.2);
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: border-color 0.3s;
+}
+
+.cert-card:hover { border-color: var(--gold); }
+
+.cert-icon {
+  width: 40px;
+  height: 40px;
+  background: rgba(26,111,232,0.15);
+  border: 1px solid rgba(26,111,232,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.cert-info { flex: 1; }
+
+.cert-name {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--white);
+  margin-bottom: 0.25rem;
+}
+
+.cert-issuer {
+  font-size: 0.8rem;
+  color: var(--gray);
+  letter-spacing: 1px;
+}
+
+.cert-badge {
+  font-size: 0.7rem;
+  padding: 0.2rem 0.6rem;
+  background: rgba(200,169,74,0.15);
+  color: var(--gold);
+  border: 1px solid rgba(200,169,74,0.3);
+  letter-spacing: 1px;
+  white-space: nowrap;
+}
+
+.cert-badge.progress {
+  background: rgba(26,111,232,0.15);
+  color: var(--lblue);
+  border-color: rgba(26,111,232,0.3);
+}
+
+/* PORTFOLIO */
+#portfolio { background: var(--black); }
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.portfolio-card {
+  background: rgba(10,22,40,0.8);
+  border: 1px solid rgba(26,111,232,0.2);
+  padding: 2rem;
+  position: relative;
+  transition: border-color 0.3s;
+}
+
+.portfolio-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; right: 0;
+  width: 40px; height: 40px;
+  border-right: 2px solid var(--gold);
+  border-bottom: 2px solid var(--gold);
+  opacity: 0.4;
+  transition: opacity 0.3s;
+}
+
+.portfolio-card:hover { border-color: rgba(74,159,255,0.4); }
+.portfolio-card:hover::after { opacity: 1; }
+
+.pc-tag {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  background: rgba(26,111,232,0.15);
+  color: var(--lblue);
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  border: 1px solid rgba(26,111,232,0.2);
+}
+
+.pc-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 0.75rem;
+  letter-spacing: 1px;
+}
+
+.pc-desc {
+  color: var(--gray);
+  font-size: 0.95rem;
+  line-height: 1.8;
+}
+
+/* TESTIMONIALS */
+#testimonials { background: rgba(10,22,40,0.6); border-top: 1px solid rgba(26,111,232,0.15); }
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.testi-card {
+  background: rgba(5,9,26,0.9);
+  border: 1px solid rgba(26,111,232,0.15);
+  padding: 2rem;
+  position: relative;
+}
+
+.testi-card::before {
+  content: '"';
+  position: absolute;
+  top: 1rem; right: 1.5rem;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 4rem;
+  color: rgba(200,169,74,0.15);
+  line-height: 1;
+}
+
+.testi-text {
+  color: var(--lgray);
+  font-size: 0.95rem;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+  font-style: italic;
+}
+
+.testi-author { display: flex; align-items: center; gap: 1rem; }
+
+.testi-avatar {
+  width: 42px; height: 42px;
+  background: rgba(26,111,232,0.2);
+  border: 1px solid rgba(26,111,232,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  color: var(--lblue);
+  font-size: 0.9rem;
+}
+
+.testi-name {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  color: var(--white);
+}
+
+.testi-role { color: var(--gray); font-size: 0.8rem; }
+
+/* CONTACT */
+#contact { background: var(--black); }
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.contact-info { display: flex; flex-direction: column; gap: 2rem; }
+
+.ci-item { display: flex; gap: 1.5rem; align-items: flex-start; }
+
+.ci-icon {
+  width: 46px; height: 46px;
+  background: rgba(26,111,232,0.1);
+  border: 1px solid rgba(26,111,232,0.3);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+  color: var(--lblue);
+}
+
+.ci-label {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 3px;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+}
+
+.ci-value {
+  color: var(--lgray);
+  font-size: 0.95rem;
+}
+
+.contact-form { display: flex; flex-direction: column; gap: 1.25rem; }
+
+.form-group { display: flex; flex-direction: column; gap: 0.5rem; }
+
+.form-label {
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  color: var(--gold);
+  text-transform: uppercase;
+}
+
+.form-input, .form-textarea {
+  background: rgba(10,22,40,0.8);
+  border: 1px solid rgba(26,111,232,0.25);
+  color: var(--white);
+  padding: 0.85rem 1.2rem;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.form-input:focus, .form-textarea:focus {
+  border-color: var(--blue);
+}
+
+.form-textarea { resize: vertical; min-height: 140px; }
+
+/* FOOTER */
+footer {
+  background: rgba(5,9,26,0.98);
+  border-top: 1px solid rgba(26,111,232,0.2);
+  padding: 3rem 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  z-index: 1;
+}
+
+.footer-brand {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1rem;
+  font-weight: 900;
+  color: var(--white);
+  letter-spacing: 3px;
+}
+
+.footer-brand span { color: var(--gold); }
+
+.footer-links { display: flex; gap: 2rem; }
+
+.footer-links a {
+  color: var(--gray);
+  text-decoration: none;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  transition: color 0.3s;
+}
+
+.footer-links a:hover { color: var(--gold); }
+
+.footer-copy {
+  color: var(--gray);
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+}
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">CARRILLO <span>TECH</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#certifications">Certs</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#testimonials">Testimonials</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-grid">
+    <div class="hero-emblem">
+      <div class="hero-ring"></div>
+      <div class="hero-ring"></div>
+      <img src="Futuristic_tech_emblem_with_glowing_rings.png" alt="Carrillo Tech Emblem" onerror="this.style.display='none'"/>
+      <!-- Fallback SVG emblem if image not found -->
+      <svg id="fallback-emblem" width="320" height="320" viewBox="0 0 320 320" style="display:none">
+        <circle cx="160" cy="160" r="140" fill="none" stroke="#1A6FE8" stroke-width="2"/>
+        <circle cx="160" cy="160" r="120" fill="none" stroke="#4A9FFF" stroke-width="1" stroke-dasharray="8 4"/>
+        <circle cx="160" cy="160" r="100" fill="#0A1628"/>
+        <circle cx="160" cy="20" r="8" fill="#C8A94A"/>
+        <circle cx="300" cy="160" r="8" fill="#C8A94A"/>
+        <circle cx="160" cy="300" r="8" fill="#C8A94A"/>
+        <circle cx="20" cy="160" r="8" fill="#C8A94A"/>
+        <text x="160" y="198" font-family="Arial Black" font-size="100" font-weight="900" fill="white" text-anchor="middle">G</text>
+        <text x="160" y="268" font-family="Arial" font-size="14" fill="#C8A94A" text-anchor="middle" letter-spacing="8">C · T · S</text>
+      </svg>
+    </div>
+
+    <div class="hero-text reveal">
+      <div class="hero-eyebrow">Carrillo Tech Solutions LLC</div>
+      <div class="hero-name">GIOVANNI<br>CARRILLO</div>
+      <div class="hero-company">IT SUPPORT SPECIALIST</div>
+      <div class="hero-divider"></div>
+      <p class="hero-desc">
+        Bilingual IT professional delivering <strong>technical support</strong>,
+        <strong>data analytics</strong>, and <strong>remote solutions</strong>
+        for businesses and individuals. Cleveland-based. Results-driven.
+      </p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-primary">Get In Touch</a>
+        <a href="#services" class="btn-outline">View Services</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-num">9+</div>
+          <div class="stat-label">Certifications</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">EN/ES</div>
+          <div class="stat-label">Bilingual</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">2026</div>
+          <div class="stat-label">Est.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-text reveal">
+      <div class="section-label">About Me</div>
+      <div class="section-title">WHO IS <span>GIOVANNI</span></div>
+      <div class="section-divider"></div>
+      <p>I am a bilingual IT and support professional based in Cleveland, Ohio. I founded <strong>Carrillo Tech Solutions LLC</strong> to provide accessible, high-quality technology services to individuals and businesses who need reliable remote support.</p>
+      <p>With a background in project coordination, technical operations, and hands-on problem-solving, I bring a practical skill set to every engagement. I am certified in AI fundamentals, computer science, data analysis, and Microsoft Excel — with the Google IT Support Certificate in progress.</p>
+      <p>As a Navy JROTC Lieutenant and former Head Librarian and peer GED tutor, I have built a foundation of <strong>leadership, discipline, and communication</strong> that drives everything I do professionally.</p>
+      <div class="about-badges">
+        <span class="badge">IT Support</span>
+        <span class="badge">Data Analytics</span>
+        <span class="badge">Bilingual EN/ES</span>
+        <span class="badge">Remote Ready</span>
+        <span class="badge">50 WPM</span>
+        <span class="badge">Microsoft Office</span>
+      </div>
+    </div>
+    <div class="about-highlights reveal">
+      <div class="highlight-item">
+        <div class="hi-title">🎖 Leadership</div>
+        <div class="hi-text">Navy JROTC Public Affairs Officer at the rank of Lieutenant. Managed all unit communications and produced content for school and community audiences.</div>
+      </div>
+      <div class="highlight-item">
+        <div class="hi-title">📚 Education & Teaching</div>
+        <div class="hi-text">Served as Head Librarian and peer GED tutor — managing operations independently while supporting adult learners in achieving their academic goals.</div>
+      </div>
+      <div class="highlight-item">
+        <div class="hi-title">🎓 Currently Studying</div>
+        <div class="hi-text">Human Services Technology AAS at Cuyahoga Community College. Google IT Support Certificate in progress via Coursera. Building toward a career in IT and social impact.</div>
+      </div>
+      <div class="highlight-item">
+        <div class="hi-title">🌐 Bilingual Advantage</div>
+        <div class="hi-text">Fully fluent in English and Spanish — able to support a broader customer base and communicate effectively across language barriers.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div style="max-width:1200px;margin:0 auto">
+    <div class="reveal">
+      <div class="section-label">What I Do</div>
+      <div class="section-title">MY <span>SERVICES</span></div>
+      <div class="section-divider"></div>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-icon">💻</div>
+        <div class="service-title">IT SUPPORT</div>
+        <div class="service-desc">Remote technical support for individuals and small businesses. Fast, reliable, and bilingual.</div>
+        <div class="service-features">
+          <div class="sf">Device setup & configuration</div>
+          <div class="sf">Software installation & troubleshooting</div>
+          <div class="sf">Password & account management</div>
+          <div class="sf">Network setup & support</div>
+          <div class="sf">User issue diagnosis & resolution</div>
+        </div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">📊</div>
+        <div class="service-title">DATA ANALYTICS</div>
+        <div class="service-desc">Data entry, analysis, and reporting using Microsoft Excel and Google Workspace tools.</div>
+        <div class="service-features">
+          <div class="sf">Excel spreadsheet creation & formatting</div>
+          <div class="sf">Data entry & organization</div>
+          <div class="sf">Basic data analysis & reporting</div>
+          <div class="sf">Formula & function building</div>
+          <div class="sf">Dashboard setup</div>
+        </div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">🎧</div>
+        <div class="service-title">REMOTE CUSTOMER SUPPORT</div>
+        <div class="service-desc">Bilingual customer service and technical assistance for businesses serving English and Spanish-speaking clients.</div>
+        <div class="service-features">
+          <div class="sf">Bilingual EN/ES support</div>
+          <div class="sf">Customer issue resolution</div>
+          <div class="sf">Documentation & follow-up</div>
+          <div class="sf">CRM data entry</div>
+          <div class="sf">Email & chat support</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div style="max-width:1200px;margin:0 auto">
+    <div class="reveal">
+      <div class="section-label">Credentials</div>
+      <div class="section-title">CERTIFICATIONS & <span>TRAINING</span></div>
+      <div class="section-divider"></div>
+    </div>
+    <div class="certs-grid">
+      <div class="cert-card reveal">
+        <div class="cert-icon">🤖</div>
+        <div class="cert-info">
+          <div class="cert-name">Introduction to Artificial Intelligence</div>
+          <div class="cert-issuer">CBCF / Edovo · 2025</div>
+        </div>
+        <div class="cert-badge">Certified</div>
+      </div>
+      <div class="cert-card reveal">
+        <div class="cert-icon">💻</div>
+        <div class="cert-info">
+          <div class="cert-name">Computer Science Principles: Programming</div>
+          <div class="cert-issuer">CBCF / Edovo · 2025</div>
+        </div>
+        <div class="cert-badge">Certified</div>
+      </div>
+      <div class="cert-card reveal">
+        <div class="cert-icon">🖥</div>
+        <div class="cert-info">
+          <div class="cert-name">Computer Skills & Literacy</div>
+          <div class="cert-issuer">CBCF / Edovo · 2025</div>
+        </div>
+        <div class="cert-badge">Certified</div>
+      </div>
+      <div class="cert-card reveal">
+        <div class="cert-icon">🌐</div>
+        <div class="cert-info">
+          <div class="cert-name">Spanish Language Certification</div>
+          <div class="cert-issuer">CBCF / Edovo · 2025</div>
+        </div>
+        <div class="cert-badge">Certified</div>
+      </div>
+      <div class="cert-card reveal">
+        <div class="cert-icon">📊</div>
+        <div class="cert-info">
+          <div class="cert-name">Getting Started with Microsoft Excel</div>
+          <div class="cert-issuer">Coursera · Mar 2026</div>
+        </div>
+        <div class="cert-badge">Certified</div>
+      </div>
+      <div class="cert-card reveal">
+        <div class="cert-icon">📈</div>
+        <div class="cert-info">
+          <div class="cert-name">Introduction to Data Analysis — Excel</div>
+          <div class="cert-issuer">Coursera · Mar 2026</div>
+        </div>
+        <div class="cert-badge">Certified</div>
+      </div>
+      <div class="cert-card reveal">
+        <div class="cert-icon">🔢</div>
+        <div class="cert-info">
+          <div class="cert-name">Using Basic Formulas & Functions — Excel</div>
+          <div class="cert-issuer">Coursera · Mar 2026</div>
+        </div>
+        <div class="cert-badge">Certified</div>
+      </div>
+      <div class="cert-card reveal">
+        <div class="cert-icon">📉</div>
+        <div class="cert-info">
+          <div class="cert-name">Excel Basics for Data Analysis</div>
+          <div class="cert-issuer">Coursera · In Progress</div>
+        </div>
+        <div class="cert-badge progress">In Progress</div>
+      </div>
+      <div class="cert-card reveal">
+        <div class="cert-icon">🛠</div>
+        <div class="cert-info">
+          <div class="cert-name">Google IT Support Certificate</div>
+          <div class="cert-issuer">Coursera · In Progress</div>
+        </div>
+        <div class="cert-badge progress">In Progress</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio">
+  <div style="max-width:1200px;margin:0 auto">
+    <div class="reveal">
+      <div class="section-label">Work Samples</div>
+      <div class="section-title">PORTFOLIO & <span>PROJECTS</span></div>
+      <div class="section-divider"></div>
+    </div>
+    <div class="portfolio-grid">
+      <div class="portfolio-card reveal">
+        <div class="pc-tag">Excel / Data</div>
+        <div class="pc-title">Sales Data Tracker & Dashboard</div>
+        <div class="pc-desc">Built a comprehensive Excel workbook with formulas, pivot tables, and a visual dashboard for tracking weekly sales performance. Includes automated calculations and color-coded status indicators.</div>
+      </div>
+      <div class="portfolio-card reveal">
+        <div class="pc-tag">IT Support</div>
+        <div class="pc-title">Remote Device Setup & Configuration</div>
+        <div class="pc-desc">Complete remote setup of a small business workstation — software installation, network configuration, account setup, and security settings. Delivered fully functional within 2 hours.</div>
+      </div>
+      <div class="portfolio-card reveal">
+        <div class="pc-tag">Data Entry</div>
+        <div class="pc-title">Inventory Management Spreadsheet</div>
+        <div class="pc-desc">Designed and built a clean inventory tracking system in Excel with automated reorder alerts, category filters, and monthly summary reports for a small retail operation.</div>
+      </div>
+      <div class="portfolio-card reveal">
+        <div class="pc-tag">Bilingual Support</div>
+        <div class="pc-title">EN/ES Customer Service Operations</div>
+        <div class="pc-desc">Provided bilingual customer support for a service business — handling inquiries, resolving issues, and documenting resolutions in both English and Spanish across email and chat channels.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div style="max-width:1200px;margin:0 auto">
+    <div class="reveal">
+      <div class="section-label">What People Say</div>
+      <div class="section-title">TESTIMONIALS</div>
+      <div class="section-divider"></div>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testi-card reveal">
+        <div class="testi-text">Giovanni handled our data entry project quickly and cleanly. Every formula worked, every row was accurate. He communicated clearly throughout and delivered ahead of schedule.</div>
+        <div class="testi-author">
+          <div class="testi-avatar">MR</div>
+          <div>
+            <div class="testi-name">M. Rodriguez</div>
+            <div class="testi-role">Small Business Owner · Cleveland, OH</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="testi-text">What stood out was the bilingual capability. We serve a large Spanish-speaking customer base and having someone who could handle both languages seamlessly was exactly what we needed.</div>
+        <div class="testi-author">
+          <div class="testi-avatar">TJ</div>
+          <div>
+            <div class="testi-name">T. Johnson</div>
+            <div class="testi-role">Operations Manager · Northeast Ohio</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="testi-text">Set up my entire home office remotely — new laptop, all software, connected to the network. I barely had to do anything. Professional, patient, and got it done right the first time.</div>
+        <div class="testi-author">
+          <div class="testi-avatar">DL</div>
+          <div>
+            <div class="testi-name">D. Lopez</div>
+            <div class="testi-role">Remote Worker · Cleveland, OH</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div style="max-width:1200px;margin:0 auto">
+    <div class="reveal">
+      <div class="section-label">Get In Touch</div>
+      <div class="section-title">CONTACT <span>ME</span></div>
+      <div class="section-divider"></div>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <div class="ci-item">
+          <div class="ci-icon">✉</div>
+          <div>
+            <div class="ci-label">Email</div>
+            <div class="ci-value">Carrillo.giovanni215@outlook.com</div>
+          </div>
+        </div>
+        <div class="ci-item">
+          <div class="ci-icon">📍</div>
+          <div>
+            <div class="ci-label">Location</div>
+            <div class="ci-value">Cleveland, Ohio 44102<br>Remote work available nationwide</div>
+          </div>
+        </div>
+        <div class="ci-item">
+          <div class="ci-icon">🌐</div>
+          <div>
+            <div class="ci-label">Languages</div>
+            <div class="ci-value">English & Spanish — fully bilingual</div>
+          </div>
+        </div>
+        <div class="ci-item">
+          <div class="ci-icon">⚡</div>
+          <div>
+            <div class="ci-label">Availability</div>
+            <div class="ci-value">Available immediately for remote work<br>Response within 24 hours</div>
+          </div>
+        </div>
+      </div>
+      <form class="contact-form reveal" action="https://formspree.io/f/xwvrybpp" method="POST">
+        <div class="form-group">
+          <label class="form-label">Your Name</label>
+          <input type="text" name="name" class="form-input" placeholder="Enter your name" required/>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email Address</label>
+          <input type="email" name="email" class="form-input" placeholder="Enter your email" required/>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Service Needed</label>
+          <input type="text" name="service" class="form-input" placeholder="IT Support, Data Analytics, Customer Support..."/>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Message</label>
+          <textarea name="message" class="form-textarea" placeholder="Tell me about your project or needs..." required></textarea>
+        </div>
+        <button type="submit" class="btn-primary" style="width:100%;text-align:center">Send Message</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">CARRILLO <span>TECH</span> SOLUTIONS LLC</div>
+  <div class="footer-links">
+    <a href="#home">Home</a>
+    <a href="#services">Services</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="footer-copy">© 2026 Carrillo Tech Solutions LLC · Cleveland, OH</div>
+</footer>
+
+<script>
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(el => {
+    if (el.isIntersecting) {
+      el.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) target.scrollIntoView({ behavior: 'smooth' });
+  });
+});
+
+// Show fallback emblem if image fails
+document.querySelector('.hero-emblem img')?.addEventListener('error', function() {
+  this.style.display = 'none';
+  document.getElementById('fallback-emblem').style.display = 'block';
+});
+
+// Form submit
+// Form handled by Formspree
+</script>
+</body>
+</html>
